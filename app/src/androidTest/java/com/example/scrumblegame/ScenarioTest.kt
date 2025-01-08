@@ -72,10 +72,10 @@ class ScenarioTest {
         gamePage = GamePage(word = "alphabet".reversed())
         gamePage.assertInitialState()
 
-        gamePage.addInput("alphab")
+        gamePage.addInput("alphabt")
         gamePage.assertInSufficientState()
 
-        gamePage.addInput("et")
+        gamePage.addInput("e")
         gamePage.assertSufficientState()
 
         gamePage.clickCheck()
@@ -97,7 +97,7 @@ class ScenarioTest {
         gamePage.removeInputLastLetter()
         gamePage.assertInSufficientState()
 
-        gamePage.addInput(text = "e")
+        gamePage.addInput(text = "l")
         gamePage.assertSufficientState()
 
         gamePage.removeInputLastLetter()
