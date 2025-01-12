@@ -2,7 +2,7 @@ package com.example.scrumblegame
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.junit.Assert.*
+import com.example.scrumblegame.page.GamePage
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -56,7 +56,7 @@ class ScenarioTest {
         gamePage.assertInitialState()
 
         gamePage.addInput("aut")
-        gamePage.assertInSufficientState()
+        gamePage.assertInsufficientState()
 
         gamePage.clickSkip()
         gamePage = GamePage(word = "anecdote".reversed())
@@ -73,7 +73,7 @@ class ScenarioTest {
         gamePage.assertInitialState()
 
         gamePage.addInput("alphabt")
-        gamePage.assertInSufficientState()
+        gamePage.assertInsufficientState()
 
         gamePage.addInput("e")
         gamePage.assertSufficientState()
@@ -86,7 +86,7 @@ class ScenarioTest {
         gamePage.assertInitialState()
 
         gamePage.addInput(text = "al")
-        gamePage.assertInSufficientState()
+        gamePage.assertInsufficientState()
 
         gamePage.addInput(text = "e")
         gamePage.assertSufficientState()
@@ -95,13 +95,13 @@ class ScenarioTest {
         gamePage.assertIncorrectState()
 
         gamePage.removeInputLastLetter()
-        gamePage.assertInSufficientState()
+        gamePage.assertInsufficientState()
 
         gamePage.addInput(text = "l")
         gamePage.assertSufficientState()
 
         gamePage.removeInputLastLetter()
-        gamePage.assertInSufficientState()
+        gamePage.assertInsufficientState()
 
         gamePage.addInput(text = "e")
         gamePage.assertSufficientState()
