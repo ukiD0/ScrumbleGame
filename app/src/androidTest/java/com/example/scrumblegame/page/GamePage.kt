@@ -38,7 +38,7 @@ class GamePage(word: String) {
         textResId = R.string.next,
         colorHex = "#D362D5",
         containerIdMatcher = containerIdMatcher,
-        containerClassTypeMatcher = container ClassTypeMatcher
+        containerClassTypeMatcher = containerClassTypeMatcher
     )
 
     private val checkUi = CheckButtonUi(
@@ -51,8 +51,8 @@ class GamePage(word: String) {
         shuffleWord.assertTextVisible()
         inputUi.assertInitialState()
         skipUi.assertVisible()
-        nextUi.assertNotVisible()
         checkUi.assertVisibleDisabled()
+        nextUi.assertNotVisible()
     }
 
     fun addInput(text: String) {
@@ -60,19 +60,19 @@ class GamePage(word: String) {
     }
 
     fun assertInsufficientState() {
-        inputUi.assertInsufficientState()
         shuffleWord.assertTextVisible()
+        inputUi.assertInsufficientState()
         skipUi.assertVisible()
-        nextUi.assertNotVisible()
         checkUi.assertVisibleDisabled()
+        nextUi.assertNotVisible()
     }
 
     fun assertSufficientState() {
-        inputUi.assertInsufficientState()
         shuffleWord.assertTextVisible()
+        inputUi.assertSufficientState()
         skipUi.assertVisible()
-        nextUi.assertNotVisible()
         checkUi.assertVisibleEnabled()
+        nextUi.assertNotVisible()
     }
 
     fun clickCheck() {
@@ -80,11 +80,11 @@ class GamePage(word: String) {
     }
 
     fun assertCorrectState() {
-        inputUi.assertCorrectState()
         shuffleWord.assertTextVisible()
+        inputUi.assertCorrectState()
         skipUi.assertNotVisible()
-        nextUi.assertVisible()
         checkUi.assertNotVisible()
+        nextUi.assertVisible()
     }
 
     fun clickNext() {
@@ -96,15 +96,14 @@ class GamePage(word: String) {
     }
 
     fun assertIncorrectState() {
-        inputUi.assertIncorrectState()
         shuffleWord.assertTextVisible()
+        inputUi.assertIncorrectState()
         skipUi.assertVisible()
-        nextUi.assertNotVisible()
         checkUi.assertVisibleDisabled()
+        nextUi.assertNotVisible()
     }
 
     fun removeInputLastLetter() {
         inputUi.removeInputLastLetter()
     }
-
 }
