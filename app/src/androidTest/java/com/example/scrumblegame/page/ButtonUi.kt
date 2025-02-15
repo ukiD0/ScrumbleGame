@@ -1,6 +1,7 @@
 package com.example.scrumblegame.page
 
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatButton
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
@@ -9,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.example.scrumblegame.ButtonColorMatcher
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.not
@@ -16,7 +18,7 @@ import org.hamcrest.Matchers.not
 class ButtonUi(
     id: Int,
     textResId: Int,
-    colorHex: String,
+    @StringRes colorHex: String,
     containerIdMatcher: Matcher<View>,
     containerClassTypeMatcher: Matcher<View>
 ) : AbstractButtonUi(

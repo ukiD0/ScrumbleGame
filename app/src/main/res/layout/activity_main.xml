@@ -7,17 +7,18 @@
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MainActivity">
-
     <Space
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1" />
     <TextView
-        android:id="@+id/shuffleWordTextView"
-        android:layout_width="wrap_content"
+        android:id="@+id/shuffledWordTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Hello World!" />
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Hello World!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <Space
         android:layout_width="wrap_content"
@@ -46,20 +47,18 @@
         android:background="@color/red"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/nextButton"
-        android:text="@string/next"
-        android:layout_marginVertical="8dp"
-        android:background="@color/purple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/checkButton"
         android:text="@string/check"
         android:background="@color/blue"
+        android:layout_marginVertical="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/nextButton"
+        android:text="@string/next"
+        android:background="@color/purple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
