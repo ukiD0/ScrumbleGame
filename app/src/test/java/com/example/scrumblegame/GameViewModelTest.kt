@@ -22,7 +22,7 @@ class GameViewModelTest {
         )
         assertEquals(actual, excepted)
 
-        actual = viewModel.handleUserInput(text = "f")
+        actual = viewModel.handleUserInput(text = "1")
         excepted = GameUiState.Insufficient(shuffeledWord = "f1")
         assertEquals(actual, excepted)
 
@@ -30,7 +30,7 @@ class GameViewModelTest {
         excepted = GameUiState.Sufficent(shuffeledWord = "f1")
         assertEquals(actual, excepted)
 
-        actual = viewModel.check(text = "f1")
+        actual = viewModel.check(text = "1f")
         excepted = GameUiState.Correct(shuffeledWord = "f1")
         assertEquals(actual, excepted)
 
@@ -49,7 +49,7 @@ class GameViewModelTest {
         excepted = GameUiState.Initial(shuffeledWord = "f2")
         assertEquals(actual, excepted)
 
-        actual = viewModel.handleUserInput(text = "f")
+        actual = viewModel.handleUserInput(text = "1")
         excepted = GameUiState.Insufficient(shuffeledWord = "f2")
         assertEquals(actual, excepted)
 
@@ -111,5 +111,21 @@ class GameViewModelTest {
 }
 
 private class FakeRepository : GameRepository {
-    //todo
+
+    private val originalList = listOf(
+        "1f", "2f", "3f", "4f", "5f"
+    )
+    private val shuffledList = originalList.map { it.reversed() }
+    private var index = 0
+
+    override fun shuffeledWord(): String = shuffledList[index]
+
+    override fun originalWord(): String = originalList[index]
+
+    override fun next() {
+        index++
+        if (index == originalList.size)
+            index = 0
+    }
+
 }
