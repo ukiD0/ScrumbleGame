@@ -16,6 +16,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.example.scrumblegame.R
+import com.example.scrumblegame.TextInputLayoutErrorEnabledMatcher
+import com.example.scrumblegame.TextInputLayoutHasErrorText
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.hamcrest.CoreMatchers.allOf

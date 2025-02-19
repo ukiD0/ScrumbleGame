@@ -1,4 +1,4 @@
-package com.example.scrumblegame.page
+package com.example.scrumblegame
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,15 +9,11 @@ import org.hamcrest.Description
 
 class ButtonColorMatcher(private val color: Int) :
     BoundedMatcher<View, Button>(Button::class.java) {
-
     constructor(colorString: String) : this(Color.parseColor(colorString))
-
     override fun describeTo(description: Description) {
-        description.appendText("color for button")
+        description.appendText("color for button doesn't match expected $color")
     }
-
     override fun matchesSafely(item: Button): Boolean {
         return (item.background as ColorDrawable).color == color
     }
-
 }

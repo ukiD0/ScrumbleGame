@@ -1,7 +1,7 @@
 package com.example.scrumblegame.page
 
-import android.view.TextureView
 import android.view.View
+import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -20,11 +20,11 @@ class ShuffleWordUi(
 ) {
     private val interaction: ViewInteraction = onView(
         allOf(
-            withId(R.id.shuffleWordTextView)
-                    withText (word),
+            withId(R.id.shuffledWordTextView),
+            withText(word),
             containerIdMatcher,
             containerClassTypeMatcher,
-            isAssignableFrom(TextureView::class.java)
+            isAssignableFrom(TextView::class.java)
         )
     )
 
