@@ -1,6 +1,6 @@
 package com.example.scrumblegame
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -11,7 +11,7 @@ class GameViewModelTest {
 
     @Before
     fun setup() {
-        viewModel = GameViewModel(repository = FakeRepository)
+        viewModel = GameViewModel(repository = FakeRepository())
     }
 
     @Test
@@ -27,7 +27,7 @@ class GameViewModelTest {
         assertEquals(actual, excepted)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficent(shuffeledWord = "f1")
+        excepted = GameUiState.Sufficient(shuffeledWord = "f1")
         assertEquals(actual, excepted)
 
         actual = viewModel.check(text = "1f")
@@ -42,10 +42,10 @@ class GameViewModelTest {
     @Test
     fun caseNumber2() {
         var actual: GameUiState = viewModel.init()
-        var excepted: GameUiState = Initial(shuffeledWord = "f1")
+        var excepted: GameUiState = GameUiState.Initial(shuffeledWord = "f1")
         assertEquals(actual, excepted)
 
-        actual = GameUiState.skip()
+        actual = viewModel.skip()
         excepted = GameUiState.Initial(shuffeledWord = "f2")
         assertEquals(actual, excepted)
 
@@ -61,7 +61,7 @@ class GameViewModelTest {
         excepted = GameUiState.Insufficient(shuffeledWord = "f3")
         assertEquals(actual, excepted)
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Insufficient(shuffeledWord = "f3")
+        excepted = GameUiState.Sufficient(shuffeledWord = "f3")
         assertEquals(actual, excepted)
 
         actual = viewModel.skip()
@@ -73,7 +73,7 @@ class GameViewModelTest {
         assertEquals(actual, excepted)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficent(shuffeledWord = "f4")
+        excepted = GameUiState.Sufficient(shuffeledWord = "f4")
         assertEquals(actual, excepted)
 
         actual = viewModel.check(text = "f1")
@@ -89,7 +89,7 @@ class GameViewModelTest {
         assertEquals(actual, excepted)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficent(shuffeledWord = "f5")
+        excepted = GameUiState.Sufficient(shuffeledWord = "f5")
         assertEquals(actual, excepted)
 
         actual = viewModel.check(text = "f1")
