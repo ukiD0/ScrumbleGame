@@ -11,20 +11,7 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel: GameViewModel = GameViewModel(object : GameRepository {
-            override fun shuffeledWord(): String {
-                TODO("Not yet implemented")
-            }
-
-            override fun originalWord(): String {
-                TODO("Not yet implemented")
-            }
-
-            override fun next() {
-                TODO("Not yet implemented")
-            }
-
-        })
+        val viewModel: GameViewModel = GameViewModel(GameRepository.Base(ShuffleStrategy.Base()))
 
         binding.skipButton.setOnClickListener {
             val uiState: GameUiState = viewModel.skip()
@@ -42,5 +29,8 @@ class MainActivity : AppCompatActivity() {
             val uiState: GameUiState = viewModel.handleUserInput(text = it.toString())
             uiState.update(binding = binding)
         }
+
+        val uiState: GameUiState = viewModel.init()
+        uiState.update(binding = binding)
     }
 }

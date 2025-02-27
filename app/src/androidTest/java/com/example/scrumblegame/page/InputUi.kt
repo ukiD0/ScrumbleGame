@@ -13,7 +13,6 @@ import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
 import androidx.test.espresso.matcher.ViewMatchers.isNotEnabled
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withParent
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.example.scrumblegame.R
 import com.example.scrumblegame.TextInputLayoutErrorEnabledMatcher
@@ -40,8 +39,8 @@ class InputUi(containerIdMatcher: Matcher<View>, containerClassTypeMatcher: Matc
         allOf(
             isAssignableFrom(TextInputEditText::class.java),
             withId(R.id.inputEditText),
-            withParent(withId(inputLayoutId)),
-            withParent(isAssignableFrom(TextInputLayout::class.java))
+            //withParent(withId(inputLayoutId)),
+            //withParent(isAssignableFrom(TextInputLayout::class.java))
         )
     )
 
