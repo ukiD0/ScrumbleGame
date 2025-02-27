@@ -47,6 +47,7 @@ class ScenarioTest {
     /**
      * Test case number 2
      */
+    @Test
     fun caseNumber2() {
         gamePage.assertInitialState()
 
