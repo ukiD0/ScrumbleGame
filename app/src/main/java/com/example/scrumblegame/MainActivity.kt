@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel: GameViewModel = GameViewModel(GameRepository.Base(ShuffleStrategy.Base()))
+        val viewModel: GameViewModel = GameViewModel(GameRepository.Base(ShuffleStrategy.Reverse()))
 
         binding.skipButton.setOnClickListener {
             val uiState: GameUiState = viewModel.skip()
