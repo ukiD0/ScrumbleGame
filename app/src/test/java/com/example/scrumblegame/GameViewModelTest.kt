@@ -27,7 +27,7 @@ class GameViewModelTest {
         assertEquals(actual, excepted)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficient(shuffledWord = "f1")
+        excepted = GameUiState.Correct(shuffledWord = "f1")
         assertEquals(actual, excepted)
 
         actual = viewModel.check(text = "1f")

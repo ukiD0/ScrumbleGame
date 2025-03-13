@@ -2,8 +2,9 @@ package com.example.scrumblegame
 
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.io.Serializable
 
-interface InputUiState {
+interface InputUiState : Serializable {
 
     fun update(inputLayout: TextInputLayout, inputEditText: TextInputEditText)
 

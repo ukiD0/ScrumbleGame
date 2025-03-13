@@ -2,8 +2,9 @@ package com.example.scrumblegame
 
 import android.view.View
 import com.example.scrumblegame.databinding.ActivityMainBinding
+import java.io.Serializable
 
-interface GameUiState {
+interface GameUiState : Serializable {
 
     fun update(binding: ActivityMainBinding)
 
