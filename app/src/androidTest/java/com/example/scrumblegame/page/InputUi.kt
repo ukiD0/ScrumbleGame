@@ -22,27 +22,29 @@ import com.google.android.material.textfield.TextInputLayout
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 
-class InputUi(containerIdMatcher: Matcher<View>, containerClassTypeMatcher: Matcher<View>) {
+class InputUi(
+    containerIdMatcher: Matcher<View>,
+    containerClassTypeMatcher: Matcher<View>
+) {
 
     private val inputLayoutId: Int = R.id.inputLayout
-    private val textInputLayoutErrorEnabledMatcherFalse = TextInputLayoutErrorEnabledMatcher(false)
-
     private val layoutInteraction: ViewInteraction = onView(
         allOf(
-            containerIdMatcher,
-            containerClassTypeMatcher,
             isAssignableFrom(TextInputLayout::class.java),
-            withId(inputLayoutId)
+            withId(inputLayoutId),
+            containerClassTypeMatcher,
+            containerIdMatcher
         )
     )
+
     private val inputInteraction: ViewInteraction = onView(
         allOf(
             isAssignableFrom(TextInputEditText::class.java),
-            withId(R.id.inputEditText),
-            //withParent(withId(inputLayoutId)),
-            //withParent(isAssignableFrom(TextInputLayout::class.java))
+            withId(R.id.inputEditText)
         )
     )
+
+    private val textInputLayoutErrorEnabledMatcherFalse = TextInputLayoutErrorEnabledMatcher(false)
 
     fun assertInitialState() {
         layoutInteraction.check(matches(isEnabled()))
@@ -78,5 +80,4 @@ class InputUi(containerIdMatcher: Matcher<View>, containerClassTypeMatcher: Matc
     fun removeInputLastLetter() {
         inputInteraction.perform(click(), pressKey(KeyEvent.KEYCODE_DEL), closeSoftKeyboard())
     }
-
 }
