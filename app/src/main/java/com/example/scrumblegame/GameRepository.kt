@@ -8,7 +8,13 @@ interface GameRepository {
 
     fun next()
 
+    fun saveUserInput(value: String)
+
+    fun userInput(): String
+
     class Base(
+        private val index: IntCache,
+        private val userInput: StringCache,
         private val shuffleStrategy: ShuffleStrategy = ShuffleStrategy.Base(),
         private val originalList: List<String> = listOf(
             "animal",
@@ -195,17 +201,22 @@ interface GameRepository {
 
         private val shuffledList = originalList.map { shuffleStrategy.shuffle(it) }
 
-        private var index = 0
+        override fun shuffledWord(): String = shuffledList[index.read()]
 
-        override fun shuffledWord(): String = shuffledList[index]
-
-        override fun originalWord(): String = originalList[index]
+        override fun originalWord(): String = originalList[index.read()]
 
         override fun next() {
-            if (index + 1 == originalList.size)
-                index = 0
-            else
-                index++
+            val value = index.read()
+            index.save(if (value + 1 == originalList.size) 0 else value + 1)
+            userInput.save("")
+        }
+
+        override fun saveUserInput(value: String) {
+            userInput.save(value)
+        }
+
+        override fun userInput(): String {
+            return userInput.read()
         }
 
     }
