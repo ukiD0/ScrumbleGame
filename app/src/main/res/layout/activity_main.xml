@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1" />
-    <TextView
+
+    <com.example.scrumblegame.views.shuffledword.ShuffledWordTextView
         android:id="@+id/shuffledWordTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,31 +26,25 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout"
+    <com.example.scrumblegame.views.input.InputView
+        android:id="@+id/inputView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_height="wrap_content" />
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.scrumblegame.views.visibilityButton.VisibilityButton
         android:id="@+id/skipButton"
         android:text="@string/skip"
         android:background="@color/red"
         android:layout_marginHorizontal="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <androidx.appcompat.widget.AppCompatButton
+
+    <com.example.scrumblegame.views.check.CheckButton
         android:id="@+id/checkButton"
         android:text="@string/check"
         android:background="@color/blue"
@@ -58,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.scrumblegame.views.visibilityButton.VisibilityButton
         android:id="@+id/nextButton"
         android:text="@string/next"
         android:background="@color/purple"

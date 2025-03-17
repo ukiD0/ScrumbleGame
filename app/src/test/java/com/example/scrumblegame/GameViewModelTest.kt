@@ -23,15 +23,15 @@ class GameViewModelTest {
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "1")
-        excepted = GameUiState.Insufficient(shuffledWord = "f1")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "1f")
-        excepted = GameUiState.Sufficient(shuffledWord = "f1")
+        excepted = GameUiState.Sufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.check(text = "1f")
-        excepted = GameUiState.Correct(shuffledWord = "f1")
+        excepted = GameUiState.Correct
         assertEquals(excepted, actual)
 
         actual = viewModel.next()
@@ -50,7 +50,7 @@ class GameViewModelTest {
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "1")
-        excepted = GameUiState.Insufficient(shuffledWord = "f2")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.skip()
@@ -58,10 +58,10 @@ class GameViewModelTest {
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f")
-        excepted = GameUiState.Insufficient(shuffledWord = "f3")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficient(shuffledWord = "f3")
+        excepted = GameUiState.Sufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.skip()
@@ -69,15 +69,15 @@ class GameViewModelTest {
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f")
-        excepted = GameUiState.Insufficient(shuffledWord = "f4")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficient(shuffledWord = "f4")
+        excepted = GameUiState.Sufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.check(text = "f1")
-        excepted = GameUiState.Incorrect(shuffledWord = "f4")
+        excepted = GameUiState.Incorrect
         assertEquals(excepted, actual)
 
         actual = viewModel.skip()
@@ -85,27 +85,27 @@ class GameViewModelTest {
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f")
-        excepted = GameUiState.Insufficient(shuffledWord = "f5")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficient(shuffledWord = "f5")
+        excepted = GameUiState.Sufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.check(text = "f1")
-        excepted = GameUiState.Incorrect(shuffledWord = "f5")
+        excepted = GameUiState.Incorrect
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f")
-        excepted = GameUiState.Insufficient(shuffledWord = "f5")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f1")
-        excepted = GameUiState.Sufficient(shuffledWord = "f5")
+        excepted = GameUiState.Sufficient
         assertEquals(excepted, actual)
 
         actual = viewModel.handleUserInput(text = "f12")
-        excepted = GameUiState.Insufficient(shuffledWord = "f5")
+        excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
     }
 }
