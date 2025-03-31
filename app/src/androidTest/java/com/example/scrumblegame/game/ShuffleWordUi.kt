@@ -1,4 +1,4 @@
-package com.example.scrumblegame.page
+package com.example.scrumblegame.game
 
 import android.view.View
 import android.widget.TextView
