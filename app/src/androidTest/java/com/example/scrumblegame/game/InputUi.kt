@@ -1,4 +1,4 @@
-package com.example.scrumblegame.page
+package com.example.scrumblegame.game
 
 import android.view.KeyEvent
 import androidx.test.espresso.Espresso.onView
