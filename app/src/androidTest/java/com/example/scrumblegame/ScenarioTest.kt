@@ -21,6 +21,7 @@ class ScenarioTest {
     fun setup() {
         gamePage = GamePage(word = "animal".reversed())
     }
+
     /**
      * UGTC-01
      */
@@ -143,6 +144,77 @@ class ScenarioTest {
         scenarioRule.doWithRecreate {
             gamePage.assertIncorrectState()
         }
+    }
+
+    /**
+     * UGTC-03
+     */
+    @Test
+    fun caseNumber3() {
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+        gamePage.clickSkip()
+
+        gamePage = GamePage(word = "auto".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.addInput("autx")
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
+
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
+
+        gamePage.removeInputLastLetter()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
+
+        gamePage.addInput("0")
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
+
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
+
+        gamePage.clickNext()
+        gamePage = GamePage(word = "anecdote".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.addInput("anecdote")
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
+
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
+
+        gamePage.clickNext()
+        gamePage = GamePage(word = "alphabet".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.addInput("alphabed")
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
+
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
+
+        gamePage.removeInputLastLetter()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
+
+        gamePage.addInput("r")
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
+
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
+
+        gamePage.clickSkip()
+        gamePage = GamePage(word = "all".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.clickSkip()
+        val statsPage = StatsPage(
+            skips = 3, fails = 3, corrects = 2
+        )
+        scenarioRule.doWithRecreate(statsPage::assertInitialState)
+
+        statsPage.clickNewGame()
+        setup()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
     }
 
     private fun ActivityScenarioRule<*>.doWithRecreate(block: () -> Unit) {
