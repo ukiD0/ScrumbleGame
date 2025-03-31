@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
-import com.example.scrumblegame.databinding.ActivityMainBinding
+import com.example.scrumblegame.databinding.FragmentGameBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var uiState: GameUiState
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: FragmentGameBinding
     private lateinit var viewModel: GameViewModel
 
     private val textWatcher = object : TextWatcher {
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = FragmentGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewModel = (application as UnscrambleApp).viewModel
