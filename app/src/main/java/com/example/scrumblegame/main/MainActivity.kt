@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity(), Navigation {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
+
+        if (savedInstanceState == null)
+            navigateToGame()
     }
 
     override fun navigate(screen: Screen) =

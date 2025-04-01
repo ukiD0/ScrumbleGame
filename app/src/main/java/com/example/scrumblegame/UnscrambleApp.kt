@@ -10,6 +10,7 @@ import com.example.scrumblegame.game.StringCache
 
 class UnscrambleApp : Application() {
 
+    lateinit var statsViewModel: StatsViewModel
     lateinit var viewModel: GameViewModel
 
     override fun onCreate() {

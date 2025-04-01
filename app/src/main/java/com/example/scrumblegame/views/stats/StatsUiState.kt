@@ -17,4 +17,8 @@ interface StatsUiState : Serializable {
 
 
     }
+
+    class Empty() : StatsUiState {
+        override fun show(statsTextView: UpdateStats) = Unit
+    }
 }
