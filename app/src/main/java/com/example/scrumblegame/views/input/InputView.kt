@@ -6,9 +6,9 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.example.scrumblegame.InputUiState
 import com.example.scrumblegame.R
 import com.example.scrumblegame.databinding.InputBinding
+import com.example.scrumblegame.game.InputUiState
 
 class InputView : FrameLayout, UpdateInput {
 

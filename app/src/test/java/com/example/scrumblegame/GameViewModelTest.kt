@@ -1,5 +1,8 @@
 package com.example.scrumblegame
 
+import com.example.scrumblegame.game.GameRepository
+import com.example.scrumblegame.game.GameUiState
+import com.example.scrumblegame.game.GameViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

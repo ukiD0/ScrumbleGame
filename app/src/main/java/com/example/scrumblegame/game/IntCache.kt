@@ -1,4 +1,4 @@
-package com.example.scrumblegame
+package com.example.scrumblegame.game
 
 import android.content.SharedPreferences
 
