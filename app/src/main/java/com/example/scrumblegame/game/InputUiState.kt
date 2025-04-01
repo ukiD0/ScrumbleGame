@@ -1,4 +1,4 @@
-package com.example.scrumblegame
+package com.example.scrumblegame.game
 
 import com.example.scrumblegame.views.input.UpdateInput
 import java.io.Serializable

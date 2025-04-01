@@ -1,13 +1,16 @@
-package com.example.scrumblegame
+package com.example.scrumblegame.game
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.scrumblegame.UnscrambleApp
 import com.example.scrumblegame.databinding.FragmentGameBinding
 
-class MainActivity : AppCompatActivity() {
-
+class GameFragment : Fragment() {
     private lateinit var uiState: GameUiState
     private lateinit var binding: FragmentGameBinding
     private lateinit var viewModel: GameViewModel
@@ -33,13 +36,23 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = FragmentGameBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        requireActivity().setContentView(binding.root)
 
-        viewModel = (application as UnscrambleApp).viewModel
+        viewModel = (requireActivity().application as UnscrambleApp).viewModel
 
         binding.nextButton.setOnClickListener {
             uiState = viewModel.next()
@@ -69,5 +82,10 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         binding.inputView.removeTextChangedListener(textWatcher)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
     }
 }

@@ -3,6 +3,7 @@ package com.example.scrumblegame
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.scrumblegame.game.GamePage
+import com.example.scrumblegame.main.MainActivity
 import com.example.scrumblegame.stats.StatsPage
 import org.junit.Before
 import org.junit.Rule
