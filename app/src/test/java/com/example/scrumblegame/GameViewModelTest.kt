@@ -111,13 +111,47 @@ class GameViewModelTest {
         excepted = GameUiState.Insufficient
         assertEquals(excepted, actual)
     }
+
+    @Test
+    fun testLastWord() {
+        viewModel = GameViewModel(repository = FakeRepository(listOf("one", "two")))
+
+        var actual: GameUiState = viewModel.init(isFirstRun = true)
+        var excepted: GameUiState = GameUiState.Initial(shuffledWord = "one".reversed())
+        assertEquals(excepted, actual)
+
+        actual = viewModel.handleUserInput(text = "one")
+        excepted = GameUiState.Sufficient
+        assertEquals(excepted, actual)
+
+        actual = viewModel.check(text = "one")
+        excepted = GameUiState.Correct
+        assertEquals(excepted, actual)
+
+        actual = viewModel.next()
+        excepted = GameUiState.Initial(shuffledWord = "two".reversed())
+        assertEquals(excepted, actual)
+
+        actual = viewModel.handleUserInput(text = "two")
+        excepted = GameUiState.Sufficient
+        assertEquals(excepted, actual)
+
+        actual = viewModel.check(text = "two")
+        excepted = GameUiState.Correct
+        assertEquals(excepted, actual)
+
+        actual = viewModel.next()
+        excepted = GameUiState.Finish
+        assertEquals(excepted, actual)
+    }
 }
 
-private class FakeRepository : GameRepository {
-
-    private val originalList = listOf(
+private class FakeRepository(
+    private val originalList: List<String> = listOf(
         "1f", "2f", "3f", "4f", "5f"
     )
+) : GameRepository {
+
     private val shuffledList = originalList.map { it.reversed() }
     private var index = 0
 
@@ -127,9 +161,11 @@ private class FakeRepository : GameRepository {
 
     override fun next() {
         index++
-        if (index == originalList.size)
-            index = 0
         saveUserInput("")
+    }
+
+    override fun isLastWord(): Boolean {
+        return index + 1 == originalList.size
     }
 
     private var input: String = ""
