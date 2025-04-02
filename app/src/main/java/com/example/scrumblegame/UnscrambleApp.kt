@@ -7,6 +7,7 @@ import com.example.scrumblegame.game.GameViewModel
 import com.example.scrumblegame.game.IntCache
 import com.example.scrumblegame.game.ShuffleStrategy
 import com.example.scrumblegame.game.StringCache
+import com.example.scrumblegame.stats.StatsViewModel
 
 class UnscrambleApp : Application() {
 

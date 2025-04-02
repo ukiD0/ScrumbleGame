@@ -12,6 +12,8 @@ interface GameRepository {
 
     fun userInput(): String
 
+    fun isLastWord(): Boolean
+
     class Base(
         private val index: IntCache,
         private val userInput: StringCache,
@@ -32,8 +34,7 @@ interface GameRepository {
         override fun originalWord(): String = originalList[index.read()]
 
         override fun next() {
-            val value = index.read()
-            index.save(if (value + 1 == originalList.size) 0 else value + 1)
+            index.save(index.read() + 1)
             userInput.save("")
         }
 
@@ -45,7 +46,14 @@ interface GameRepository {
             return userInput.read()
         }
 
+        override fun isLastWord(): Boolean {
+            val lastWord = index.read() == originalList.size
+            if (lastWord)
+                index.save(0)
+            return lastWord
+        }
     }
+
 }
 
 interface ShuffleStrategy {
