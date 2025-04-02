@@ -1,5 +1,7 @@
 package com.example.scrumblegame
 
+import com.example.scrumblegame.stats.StatsRepository
+import com.example.scrumblegame.stats.StatsViewModel
 import com.example.scrumblegame.views.stats.StatsUiState
 import org.junit.Assert.assertEquals
 import org.junit.Test
