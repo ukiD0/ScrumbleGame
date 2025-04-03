@@ -11,7 +11,11 @@ class StatsViewModelTest {
     @Test
     fun test() {
         val repository = FakeStatsRepository()
-        val viewModel: StatsViewModel = StatsViewModel(repository = repository)
+        val clearViewModel = FakeClearViewModel()
+        val viewModel: StatsViewModel = StatsViewModel(
+            repository = repository,
+            clearViewModel = clearViewModel
+        )
 
         var actualUiState: StatsUiState = viewModel.init(isFirstRun = true)
         assertEquals(StatsUiState.Base(1, 2, 3), actualUiState)
@@ -19,6 +23,9 @@ class StatsViewModelTest {
 
         actualUiState = StatsUiState.Empty
         assertEquals(StatsUiState.Empty, actualUiState)
+
+        viewModel.clear()
+        assertEquals(StatsViewModel::class.java, clearViewModel.clasz)
     }
 }
 
