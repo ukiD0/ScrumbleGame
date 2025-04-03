@@ -15,13 +15,10 @@ class StatsViewModelTest {
 
         var actualUiState: StatsUiState = viewModel.init(isFirstRun = true)
         assertEquals(StatsUiState.Base(1, 2, 3), actualUiState)
+        repository.assertClearCalled()
 
         actualUiState = StatsUiState.Empty
-
         assertEquals(StatsUiState.Empty, actualUiState)
-
-        viewModel.clear()
-        repository.assertClearCalled()
     }
 }
 

@@ -9,16 +9,14 @@ class GameViewModel(
     }
 
     fun check(text: String): GameUiState {
-        val originalWord = repository.originalWord()
-        val isCorrect = originalWord.equals(text, ignoreCase = true)
-        return if (isCorrect)
+        return if (repository.isCorrect(text))
             GameUiState.Correct
         else
             GameUiState.Incorrect
     }
 
     fun skip(): GameUiState {
-        repository.next()
+        repository.skip()
         return init()
     }
 
