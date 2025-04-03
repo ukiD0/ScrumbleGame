@@ -168,7 +168,7 @@ class ScenarioTest {
         gamePage.removeInputLastLetter()
         scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
-        gamePage.addInput("0")
+        gamePage.addInput("o")
         scenarioRule.doWithRecreate(gamePage::assertSufficientState)
 
         gamePage.clickCheck()

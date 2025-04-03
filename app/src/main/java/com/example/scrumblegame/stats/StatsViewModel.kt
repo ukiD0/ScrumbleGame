@@ -1,8 +1,13 @@
 package com.example.scrumblegame.stats
 
+import com.example.scrumblegame.di.ClearViewModel
+import com.example.scrumblegame.di.MyViewModel
 import com.example.scrumblegame.views.stats.StatsUiState
 
-class StatsViewModel(private val repository: StatsRepository) {
+class StatsViewModel(
+    private val repository: StatsRepository,
+    private val clearViewModel: ClearViewModel
+) : MyViewModel {
 
     fun init(isFirstRun: Boolean): StatsUiState {
         return if (isFirstRun) {
@@ -14,4 +19,7 @@ class StatsViewModel(private val repository: StatsRepository) {
         }
     }
 
+    fun clear() {
+        clearViewModel.clear(StatsViewModel::class.java)
+    }
 }
